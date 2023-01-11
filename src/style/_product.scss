@@ -1,0 +1,51 @@
+.product {
+ 
+    &__title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 13px;
+
+        @include tablet {
+            font-size: 12px;
+            line-height: 15px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__link {
+
+    }
+    &__btn-favorite {
+        width: 24px;
+        height: 24px;
+        //background-image: none;
+
+        &_active {
+            //background-image: none;
+        }
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+
+    }
+    &__price {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+
+    &__image {
+        margin-bottom: 16px;
+
+        @include tablet {
+            margin-bottom: 10px;
+        }
+    }
+
+    
+}
