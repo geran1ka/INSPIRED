@@ -1,0 +1,48 @@
+.hero {
+    background-color: $dark-gray;
+    color: $second-color;
+    margin-bottom: 80px;
+    background-position: center;
+    background-size: cover;
+
+    
+    &__women {
+        //background-image: url();
+    }
+
+    &__men {
+        //background-image: url();
+    }
+
+    &__content {
+        max-width: 590px;
+        padding: 172px 0 86px;
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 120%;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+    &__link {
+        display: inline-block;
+        padding: 14px 40px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;       
+        border: 1px solid $second-color;
+        transition-property: background-color, border-color;
+        transition-timing-function: ease-in-out;
+        transition-duration: .3s;
+        background-color: transperant;
+
+        &:hover {
+            background-color: $dark-gray;
+            border-color: $dark-gray
+        }
+    }
+}
