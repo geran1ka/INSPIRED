@@ -28,6 +28,17 @@
 
     &__men {
         background-image: url('../img/bg-men.jpg');
+       
+        @include laptop {
+            background-image: url('../img/bg-laptop-men.jpg');
+        }
+        @include tablet {
+            background-image: url('../img/bg-tablet-men.jpg');
+        }
+        @include mobile {
+            background-image: url('../img/bg-mobile-men.jpg');
+        }
+
     }
 
     &__content {
@@ -55,7 +66,7 @@
             margin-bottom: 24px;
         }
         @include mobile {
-            font-size: 44px;
+            font-size: 20px;
             margin-bottom: 16px;
         }
     }

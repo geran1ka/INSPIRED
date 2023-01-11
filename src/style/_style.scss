@@ -56,6 +56,17 @@ fieldset {
     margin: 0;
 }
 
+main {
+    margin-bottom: 120px;
+
+    @include tablet {
+        margin-bottom: 80px;
+    }
+
+    @include mobile {
+        margin-bottom: 80px;
+    }
+}
 /*
 Доступно скрываю элементы
   */
