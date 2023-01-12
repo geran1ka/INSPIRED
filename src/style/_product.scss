@@ -9,7 +9,7 @@
         @include tablet {
             font-size: 12px;
             line-height: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
     }
 
@@ -28,13 +28,30 @@
         align-items: center;
         margin-bottom: 12px;
 
+        @include tablet {
+            margin-bottom: 10px;
+        }
+
     }
 
     &__price {
         font-size: 14px;
         line-height: 17px;
+
+        @include tablet {
+            margin-bottom: 3px;
+            font-size: 12px;
+            line-height: 15px;
+        }
     }
 
+    &__link {
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: $gray;
+        }
+    }
 
     &__image {
         margin-bottom: 16px;
