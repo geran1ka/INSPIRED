@@ -1,6 +1,7 @@
 import { createElement } from "../createElement";
+import logo from '../../img/logo.svg'
 
-export const searchButton = document.createElement('button', {
+export const searchButton = createElement('button', {
     className: 'header__link',
     innerHTML: `
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +11,7 @@ export const searchButton = document.createElement('button', {
     `
 });
 
-export const cartLink = document.createElement('a', {
+export const cartLink = createElement('a', {
     className: 'header__link',
     innerHTML: `
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +22,7 @@ export const cartLink = document.createElement('a', {
     href: 'cart'
 });
 
-export const favoriteLink = document.createElement('a', {
+export const favoriteLink = createElement('a', {
     className: 'header__link',
     innerHTML: `
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +36,7 @@ const container = createElement('div', {
     className: 'container header__container',
     innerHTML: `
         <a href="tel:89304902620" class="header__phone header__link">8 930 490 26 20</a>
-        <img class="header__logo" src="img/logo.svg" alt="Логотип inspired">
+        <img class="header__logo" src="${logo}" alt="Логотип inspired">
     `
 })
 
@@ -45,35 +46,30 @@ const nav = createElement('div', {
     parent: container,
 })
 
+createElement('ul', {
+    className: 'header__nav-list',
+}, {
+    parent: nav,
+    appends: [
+        createElement('li', {
+            className: 'header__nav-item'
+        }, {
+            append: searchButton,
+        }),
+        createElement('li', {
+            className: 'header__nav-item'
+        }, {
+            append: cartLink,
+        }),
+        createElement('li', {
+            className: 'header__nav-item'
+        }, {
+            append: favoriteLink,
+        })
+    ],
+})
+
 export const renderHeader = () => {
     const header = document.querySelector('.header');
-
-    header.innerHTML = `
-        <div class="container header__container">
-
-        
-        <div class="header__navigation">
-            <ul class="header__nav-list">
-            <li class="header__nav-item">
-                <button class="header__link">
-                
-                    
-                </button>
-            </li>
-            <li class="header__nav-item">
-                <a href="#" class="header__link">
-                
-                    
-                </a>
-            </li>
-            <li class="header__nav-item">
-                <a href="#" class="header__link">
-               
-                    
-                </a>
-            </li>
-            </ul>
-        </div>
-        </div>  
-    `
+    header.append(container)
 }

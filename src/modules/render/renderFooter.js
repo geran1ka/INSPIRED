@@ -1,5 +1,15 @@
+
+/*const container = createElement('div', {
+    className: 'container footer__container',
+    innerHTML: `
+        <a href="tel:89304902620" class="header__phone header__link">8 930 490 26 20</a>
+        <img class="header__logo" src="${logo}" alt="Логотип inspired">
+    `
+})
+*/
 export const renderFooter = () => {
     const footer = document.querySelector('.footer');
+    //footer.append(container);
 
     footer.innerHTML = `
         <div class="container">
