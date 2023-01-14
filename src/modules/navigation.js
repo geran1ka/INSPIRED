@@ -1,6 +1,6 @@
 export const dataNavigation = {
   women: {
-    title: 'Женское',
+    title: 'Женщины',
     list: [
       {
         title: 'Бюстгальтеры',
@@ -29,7 +29,7 @@ export const dataNavigation = {
     ],
   },
   men: {
-    title: 'Мужское',
+    title: 'Мужчины',
     list: [
       {
         title: 'Нижнее бельё',
