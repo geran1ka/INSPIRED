@@ -1,9 +1,9 @@
 import { createElement } from "../createElement";
-import { dataNavigation } from "../navigation";
+
 
 export const renderFooter = () => {
     const footer = document.querySelector('.footer');
-  
+  /*
     footer.textContent = '';
 
     const container = createElement('div', 
@@ -161,8 +161,8 @@ createElement('ul', {
             })
         }),
     ]
-})
-/*
+})*/
+
     footer.innerHTML = `
         <div class="container">
             <div class="footer__container">
@@ -258,5 +258,5 @@ createElement('ul', {
                 </div>
         </div>
     `
-    */
+    
 }
