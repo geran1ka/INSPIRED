@@ -27,7 +27,7 @@ export const renderProducts = async (title, params) => {
 
 
     const listCard = goods.map((product) => {
-        console.log('product: ', product);
+        //console.log('product: ', product);
         const li = createElement('li', {
             className: 'goods__item',
         });
