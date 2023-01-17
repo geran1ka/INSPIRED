@@ -7,21 +7,13 @@ export const renderFooter = () => {
 
     footer.textContent = '';
 
-    const container = createElement('div', 
-        {
-            className: 'container',
-        }, 
-        {
-            parent: footer,
-        }
-    )
 
     const footerContainer = createElement('div', 
         {
-            className: 'footer__container',
+            className: 'container footer__container',
         }, 
         {
-            parent: container,
+            parent: footer,
         }
     );
     

@@ -2,6 +2,7 @@ import './index.html';
 import './index.scss';
 import { API_URL, DATA } from './modules/const';
 import { createCSSColors } from './modules/createCssColors';
+import { createElement } from './modules/createElement';
 import { getData } from './modules/getData';
 
 import { mainPage } from './modules/mainPage/mainPage';
@@ -12,40 +13,57 @@ import { renderHeader } from './modules/render/renderHeader';
 import { router } from './modules/rooter';
 
 const init = async () => {
-    DATA.navigation = await getData(`${API_URL}/api/categories`);
-    DATA.colors = await getData(`${API_URL}/api/colors`)
+    try {
+        router.on('*', () => {
+            renderHeader();
+            renderFooter();
+        });
 
-    createCSSColors(DATA.colors)
+        DATA.navigation = await getData(`${API_URL}/api/categories`);
+        DATA.colors = await getData(`${API_URL}/api/colors`)
 
-    router.on('*', () => {
-        renderHeader();
-        renderFooter();
-    })
-    
-    router.on('/', () => {
-        mainPage();
-    })
-    
-    router.on('women', () => {
-        womenMainPage();
-    })
-    
-    router.on('men', () => {
-        menMainPage();
-    })
-    /*
-    setTimeout(() => {
-        router.navigate('men');
-    }, 3000)
-    
-    setTimeout(() => {
-        router.navigate('women');
-    }, 6000)
-    */
-    router.resolve();
+        createCSSColors(DATA.colors)
 
+        router.on('/', () => {
+            mainPage();
+        })
+        
+        router.on('women', () => {
+            womenMainPage();
+        })
+        
+        router.on('men', () => {
+            menMainPage();
+        });
+
+        router.on('search', (data) => {
+            console.log(data);
+            
+        });
+        /*
+        setTimeout(() => {
+            router.navigate('men');
+        }, 3000)
+        
+        setTimeout(() => {
+            router.navigate('women');
+        }, 6000)
+        */
+        
+
+
+    } catch (e) {
+        createElement('h2', {
+            textContent: 'Что-то пошло не так, попробуйте позже',
+        }, {
+            parent: document.querySelector('main'),
+            cb(h2) {
+                h2.style.textAlign = 'center'
+            }
+        })
+    } finally {
+        router.resolve();
+    }
 }
-
-init()  
-;
+init();  
 
