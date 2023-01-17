@@ -4,7 +4,7 @@ import { router } from "../rooter";
 export const renderPagination = (wrapperPagination, page, pages, count) => {
     wrapperPagination.textContent = '';
 
-    const paginationList = createElement('ul', {
+createElement('ul', {
         className: 'pagination__list',
     }, {
         parent: wrapperPagination,
@@ -14,13 +14,15 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
 
     const isEnd = page + Math.floor(count / 2) > pages;
 
+
+
     for (let i = 0; i < count; i++) {
         let n = i + 1;
         if(isNotStart) {
             if (isEnd) {
-                n = pages - count + i
+                n = pages - count + i + 1;
             } else {
-                n = pages - Math.floor(count / 2) + i
+                n = page - Math.floor(count / 2) + i
             }
         }
     
@@ -32,7 +34,29 @@ export const renderPagination = (wrapperPagination, page, pages, count) => {
             className: `pagination__link ${page === n ? 'pagination__link_active' : ''}`,
             textContent: n,
             href: `${router.getCurrentLocation().url}?page=${n}`,
+            })
         })
-    })
-}
+    }
+
+    if (pages > count) {
+        createElement('a', {
+            className: `pagination__arrow pagination__arrow_start ${isNotStart ? 'pagination__arrow_disabled}' : ''}`,
+            href: `${router.getCurrentLocation().url}?page=${1}`,
+            textContent: 'start',
+            ariaLabel: 'В начало',
+        }, {
+            parent: wrapperPagination,
+        }),
+
+        createElement('a', {
+            className: `pagination__arrow pagination__arrow_end ${isEnd ? 'pagination__arrow_disabled}' : ''}`,
+            href: `${router.getCurrentLocation().url}?page=${pages}`,
+            textContent: 'end',
+            ariaLabel: 'В конец',
+        }, {
+            parent: wrapperPagination,
+        })
+    }
+
+    
 }
