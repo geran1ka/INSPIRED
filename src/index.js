@@ -6,8 +6,7 @@ import { createElement } from './modules/createElement';
 import { getData } from './modules/getData';
 
 import { mainPage } from './modules/mainPage/mainPage';
-import { menMainPage } from './modules/mainPage/menMainPage';
-import { womenMainPage } from './modules/mainPage/womenMainPage';
+import { categoryPage } from './modules/render/categoryPage';
 import { renderFooter } from './modules/render/renderFooter';
 import { renderHeader } from './modules/render/renderHeader';
 import { router } from './modules/rooter';
@@ -29,12 +28,14 @@ const init = async () => {
         })
         
         router.on('women', () => {
-            womenMainPage();
+            mainPage('women');
         })
         
         router.on('men', () => {
-            menMainPage();
+            mainPage('men');
         });
+
+        router.on('/:gender/:category', categoryPage);
 
         router.on('search', (data) => {
             console.log(data);

@@ -76,5 +76,9 @@
             font-size: 10px;
             line-height: 12px;
         }
+
+        @include mobile {
+            flex-basis: 100px;
+        }
     }
 }
