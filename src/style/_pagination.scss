@@ -2,7 +2,7 @@
     display: flex;
     padding-top: 37px;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
 
     &__list {
         display: flex;
@@ -74,14 +74,17 @@
     }
 
     &__arrow {
+        transform: translateY(-3px);
         color: $main-color;
     };
 
     &__arrow_start {
-        
         order: -1;
     };
 
+    &__arrow_end {
+        order: 1;
+    };
     &__arrow_disabled {
         pointer-events: none;
         color: $gray;
