@@ -2,6 +2,7 @@
     display: flex;
     padding-top: 37px;
     justify-content: center;
+    align-items: baseline;
 
     &__list {
         display: flex;
@@ -10,6 +11,7 @@
         padding-left: 16px;
         padding-right: 16px;
         gap: 14px;
+        align-items: baseline;
 
         @include tablet {
             padding-top: 21px;
@@ -83,10 +85,6 @@
     &__arrow_disabled {
         pointer-events: none;
         color: $gray;
-    };
-
-    &__arrow_end {
-
     };
 
 }

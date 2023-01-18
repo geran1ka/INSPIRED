@@ -2,6 +2,7 @@ import { createElement } from "../createElement";
 import { router } from "../rooter";
 
 export const renderPagination = (wrapperPagination, page, pages, count) => {
+    
     wrapperPagination.textContent = '';
 
 const paginationList = createElement('ul', {
@@ -11,18 +12,23 @@ const paginationList = createElement('ul', {
     });
 
     const isNotStart = page - Math.floor(count / 2) > 1;
-
+    
     const isEnd = page + Math.floor(count / 2) > pages;
-
-
+// нужно ли добавлять данную проверку?
+    if (!(pages > 2)) {
+        count = pages;
+    };
 
     for (let i = 0; i < count; i++) {
         let n = i + 1;
         if(isNotStart) {
+            console.log(n);
             if (isEnd) {
                 n = pages - count + i + 1;
+                console.log('if n: ', n);
             } else {
                 n = page - Math.floor(count / 2) + i
+                console.log('else n: ', n);
             }
         }
     
