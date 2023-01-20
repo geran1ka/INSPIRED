@@ -1,12 +1,12 @@
-import { API_URL, COUNT_PAGINATION, DATA, TITLE } from "../const";
+import { API_URL, COUNT_PAGINATION, DATA, products, TITLE } from "../const";
 import { createElement } from "../utils/createElement";
 import { getData } from "../getData";
 import { renderPagination } from "./renderPagination";
+import { getFavorite } from "../controller/favoriteController";
 
 
 
 export const renderProducts = async (title, params) => {
-    const products = document.querySelector('.goods');
 
     products.textContent = '';
 
@@ -20,13 +20,34 @@ export const renderProducts = async (title, params) => {
         parent: products
     });
 
-    createElement('h2', {
+    const titleElem = createElement('h2', {
         className: 'goods__title',
         textContent: title,
     }, {
         parent: container,
     });
 
+    if (Object.hasOwn(data, 'totalCount')) {
+        createElement('sup', {
+        clasName: 'goods__title-sup',
+        innerHTML: `&nbsp(${data?.totalCount})`
+        }, {
+            parent: titleElem
+        });
+
+        if (!data.totalCount) {
+            createElement('p', {
+                clasName: 'goods_warning',
+                textContent: 'По вашему запросу ничего не найдено',
+        }, {
+            parent: container,
+        });
+
+        return;
+        }
+    };
+
+    const favoriteList = getFavorite();
 
     const listCard = goods.map((product) => {
         //console.log('product: ', product);
@@ -45,7 +66,7 @@ export const renderProducts = async (title, params) => {
 
                 <div class="product__row">
                     <p class="product__price">руб ${product.price}</p>
-                    <button class="product__btn-favorite" area-label="Добавить в избранное" data-id=${product.id}></button>
+                    <button class="product__btn-favorite favorite ${favoriteList.includes(product.id) ? 'favorite_active' : '' }" area-label="Добавить в избранное" data-id=${product.id}></button>
                 </div>
             </article>
         `,

@@ -1,6 +1,6 @@
 import './index.html';
 import './index.scss';
-import { API_URL, DATA } from './modules/const';
+import { API_URL, DATA, main } from './modules/const';
 import { searchPageControler } from './modules/controller/searchController';
 import { createCSSColors } from './modules/createCssColors';
 import { createElement } from './modules/utils/createElement';
@@ -11,6 +11,7 @@ import { categoryPageController } from './modules/controller/categoryPageControl
 import { renderFooter } from './modules/render/renderFooter';
 import { renderHeader } from './modules/render/renderHeader';
 import { router } from './modules/utils/rooter';
+import { favoriteController } from './modules/controller/favoriteController';
 
 const init = async () => {
     try {
@@ -39,6 +40,8 @@ const init = async () => {
         router.on('/:gender/:category', categoryPageController);
 
         router.on('search', searchPageControler);
+
+        router.on('favorite', favoriteController);
         /*
         setTimeout(() => {
             router.navigate('men');
@@ -55,7 +58,7 @@ const init = async () => {
         createElement('h2', {
             textContent: 'Что-то пошло не так, попробуйте позже',
         }, {
-            parent: document.querySelector('main'),
+            parent: main,
             cb(h2) {
                 h2.style.textAlign = 'center'
             }

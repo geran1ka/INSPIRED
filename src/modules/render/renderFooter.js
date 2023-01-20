@@ -1,9 +1,8 @@
-import { DATA } from "../const";
+import { DATA, footer } from "../const";
 import { createElement } from "../utils/createElement";
 
 
 export const renderFooter = () => {
-    const footer = document.querySelector('.footer');
 
     footer.textContent = '';
 
