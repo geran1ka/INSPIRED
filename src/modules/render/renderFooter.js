@@ -1,5 +1,5 @@
 import { DATA } from "../const";
-import { createElement } from "../createElement";
+import { createElement } from "../utils/createElement";
 
 
 export const renderFooter = () => {

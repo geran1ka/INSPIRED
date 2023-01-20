@@ -1,15 +1,16 @@
 import './index.html';
 import './index.scss';
 import { API_URL, DATA } from './modules/const';
+import { searchPageControler } from './modules/controller/searchController';
 import { createCSSColors } from './modules/createCssColors';
-import { createElement } from './modules/createElement';
+import { createElement } from './modules/utils/createElement';
 import { getData } from './modules/getData';
 
-import { mainPage } from './modules/mainPage/mainPage';
-import { categoryPage } from './modules/render/categoryPage';
+import { mainPageController } from './modules/controller/mainPageController';
+import { categoryPageController } from './modules/controller/categoryPageController';
 import { renderFooter } from './modules/render/renderFooter';
 import { renderHeader } from './modules/render/renderHeader';
-import { router } from './modules/rooter';
+import { router } from './modules/utils/rooter';
 
 const init = async () => {
     try {
@@ -24,23 +25,20 @@ const init = async () => {
         createCSSColors(DATA.colors)
 
         router.on('/', () => {
-            mainPage();
+            mainPageController();
         })
         
         router.on('women', () => {
-            mainPage('women');
+            mainPageController('women');
         })
         
         router.on('men', () => {
-            mainPage('men');
+            mainPageController('men');
         });
 
-        router.on('/:gender/:category', categoryPage);
+        router.on('/:gender/:category', categoryPageController);
 
-        router.on('search', (data) => {
-            console.log(data);
-            
-        });
+        router.on('search', searchPageControler);
         /*
         setTimeout(() => {
             router.navigate('men');

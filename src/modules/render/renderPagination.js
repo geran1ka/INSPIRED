@@ -1,8 +1,8 @@
-import { createElement } from "../createElement";
-import { router } from "../rooter";
+import { createElement } from "../utils/createElement";
+import { getUrl } from "../utils/getUrl";
+import { router } from "../utils/rooter";
 
 export const renderPagination = (wrapperPagination, page, pages, count) => {
-    
     wrapperPagination.textContent = '';
 
 const paginationList = createElement('ul', {
@@ -35,7 +35,7 @@ const paginationList = createElement('ul', {
         append: createElement('a', {
             className: `pagination__link ${page === n ? 'pagination__link_active' : ''}`,
             textContent: n,
-            href: `${router.getCurrentLocation().url}?page=${n}`,
+            href: getUrl({page: n}),
             })
         })
     }
@@ -43,7 +43,7 @@ const paginationList = createElement('ul', {
     if (pages > count) {
         createElement('a', {
             className: `pagination__arrow pagination__arrow_start ${!isNotStart ? 'pagination__arrow_disabled' : ''}`,
-            href: `${router.getCurrentLocation().url}?page=${1}`,
+            href: getUrl({page: 1}),
             ariaLabel: 'В начало',
             innerHTML: `
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@ const paginationList = createElement('ul', {
 
         createElement('a', {
             className: `pagination__arrow pagination__arrow_end ${isEnd ? 'pagination__arrow_disabled' : ''}`,
-            href: `${router.getCurrentLocation().url}?page=${pages}`,
+            href: getUrl({page: pages}),
             ariaLabel: 'В конец',
             innerHTML: `
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
