@@ -38,9 +38,10 @@ export const renderCard = ({data, render}) => {
                 e.preventDefault();
 
                 const {color, size, count} = elem;
-                if (color.value && size.value && count.value) {
-                    const formData = new FormData(elem);
-                    const product = Object.fromEntries(formData);
+                const formData = new FormData(elem);
+                const product = Object.fromEntries(formData);
+
+                if (product.color && product.size && product.count) {
                     addProductCart(product);
 
                     return;
@@ -48,7 +49,7 @@ export const renderCard = ({data, render}) => {
                 
                 const p = createElement('p', {
                     className: 'card__alert',
-                    textContent: size.value ? color.value ? count.value ? 'Что-то пошkо не так' : 'Кол-во не корректное' : 'Выбирете цвет' : 'Выбирите размер',
+                    textContent: product.size ? product.color ? product.count ? 'Что-то пошkо не так' : 'Кол-во не корректное' : 'Выбирете цвет' : 'Выбирите размер',
                 }, {
                     parent: form,
                     cb(p) {

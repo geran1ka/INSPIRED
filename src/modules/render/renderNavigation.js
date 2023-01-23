@@ -3,6 +3,7 @@ import { createElement } from "../utils/createElement";
 
 let flag = false;
 let oldGender = 'women';
+let oldCategory = '';
 
 export const renderNavigation = ({gender, category, render, repeat}) => {
     
@@ -13,13 +14,14 @@ export const renderNavigation = ({gender, category, render, repeat}) => {
         navigation.style.display = '';
     };
 
-    if (flag && oldGender === gender) {return};
+    if (flag && oldGender === gender && oldCategory === category) {return};
 
     if (repeat) {
         gender = oldGender;
     };
 
     oldGender = gender;
+    oldCategory = category
 
     flag = true;
 
