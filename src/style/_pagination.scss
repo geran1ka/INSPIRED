@@ -1,93 +1,61 @@
 .pagination {
     display: flex;
-    padding-top: 37px;
-    justify-content: center;
-    align-items: center;
+    width: max-content;
+    margin: 0 auto;
+    gap: 16px;
+    padding-top: 40px;
 
     &__list {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 16px;
-        padding-right: 16px;
-        gap: 14px;
-        align-items: baseline;
-
+        gap: 8px;
+        padding-top: 3px;
+        padding-bottom: 6px;
+        
         @include tablet {
-            padding-top: 21px;
+            gap: 10px;
         }
-
-        @include mobile {
-            padding-top: 13px;
-        }
-    };
-
-    &__item {
-        width: 16px;
-        height: 24px;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        color: $main-color;
-
-        @include tablet {
-            width: 10px;
-            height: 19px;
-            font-size: 10px;
-            line-height: 12px;
-        }
-    };
+    }
 
     &__link {
         position: relative;
-        transition: color 0.3s ease-in-out;
+        width: 16px;
+        font-size: 14px;
+        line-height: 17px;
+        color: $gray;
 
-        &:hover {
-            color: $gray;
+        @include tablet {
+            width: 10px;
+            font-size: 10px;
+            line-height: 12px;
         }
 
-        &:after {
+        &::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 2px;
-            background-color: $main-color;
-            opacity: 0;
-
-            @include tablet {
-                bottom: -4px;
-                width: 10px;
-                height: 1px;
-            }
+            display: block;
+            height: 1px;
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            background-color: transparent;
         }
 
         &_active {
-            pointer-events: none;
-            
-            &:after {
-                opacity: 1;
+            color: $main-color;
+
+            &::after {
+                background-color: $main-color;
             }
-    };
+        }
     }
 
     &__arrow {
-        transform: translateY(-3px);
         color: $main-color;
-    };
 
-    &__arrow_start {
-        order: -1;
-    };
-
-    &__arrow_end {
-        order: 1;
-    };
-    &__arrow_disabled {
-        pointer-events: none;
-        color: $gray;
-    };
+        &_disabled {
+            color: $gray;
+            pointer-events: none;
+        }
+    }
 
 }

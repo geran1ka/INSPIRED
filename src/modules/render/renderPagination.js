@@ -13,7 +13,7 @@ const paginationList = createElement('ul', {
 
     const isNotStart = page - Math.floor(count / 2) > 1;
     
-    const isEnd = page + Math.floor(count / 2) > pages;
+    const isEnd = page + Math.floor(count / 2) >= pages;
 
     if (count > pages) count = pages;
 
@@ -44,6 +44,7 @@ const paginationList = createElement('ul', {
         createElement('a', {
             className: `pagination__arrow pagination__arrow_start ${!isNotStart ? 'pagination__arrow_disabled' : ''}`,
             href: getUrl({page: 1}),
+            tabIndex: !isNotStart ? '-1' : '0',
             ariaLabel: 'В начало',
             innerHTML: `
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -51,12 +52,15 @@ const paginationList = createElement('ul', {
                 </svg>
             `,
         }, {
-            parent: wrapperPagination,
+            cb(link) {
+                wrapperPagination.prepend(link);
+            }
         }),
 
         createElement('a', {
             className: `pagination__arrow pagination__arrow_end ${isEnd ? 'pagination__arrow_disabled' : ''}`,
             href: getUrl({page: pages}),
+            tabIndex: isEnd ? '-1' : '0',
             ariaLabel: 'В конец',
             innerHTML: `
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
