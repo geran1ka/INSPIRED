@@ -12,6 +12,7 @@ import { renderFooter } from './modules/render/renderFooter';
 import { renderHeader } from './modules/render/renderHeader';
 import { router } from './modules/utils/rooter';
 import { favoriteController } from './modules/controller/favoriteController';
+import { cardController } from './modules/controller/cardController';
 
 const init = async () => {
     try {
@@ -38,6 +39,9 @@ const init = async () => {
         });
 
         router.on('/:gender/:category', categoryPageController);
+
+        router.on('/product/:id', cardController);
+
 
         router.on('search', searchPageControler);
 

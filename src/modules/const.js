@@ -26,5 +26,7 @@ export const products = document.querySelector('.goods');
 
 export const footer = document.querySelector('.footer');
 
+export const card = document.querySelector('.card');
+
 
 
