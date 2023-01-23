@@ -4,17 +4,18 @@ import { createElement } from "../utils/createElement";
 let flag = false;
 let oldGender = 'women';
 
-export const renderNavigation = (gender, category) => {
+export const renderNavigation = ({gender, category, render, repeat}) => {
     
-    if (!gender) {
+    if (!render) {
         navigation.style.display = 'none';
+        return;
     } else {
         navigation.style.display = '';
     };
 
     if (flag && oldGender === gender) {return};
 
-    if (gender === 'all') {
+    if (repeat) {
         gender = oldGender;
     };
 

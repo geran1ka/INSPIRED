@@ -6,9 +6,13 @@ import { getFavorite } from "../controller/favoriteController";
 
 
 
-export const renderProducts = async (title, params) => {
+export const renderProducts = async ({title, params, render}) => {
 
     products.textContent = '';
+
+    if (!render) {
+        return;
+    }
 
     const data = await getData(`${API_URL}/api/goods`, params);
 

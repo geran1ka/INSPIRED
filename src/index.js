@@ -13,6 +13,7 @@ import { renderHeader } from './modules/render/renderHeader';
 import { router } from './modules/utils/rooter';
 import { favoriteController } from './modules/controller/favoriteController';
 import { cardController } from './modules/controller/cardController';
+import { cartController } from './modules/controller/cartController';
 
 const init = async () => {
     try {
@@ -42,6 +43,7 @@ const init = async () => {
 
         router.on('/product/:id', cardController);
 
+        router.on('/cart', cartController);
 
         router.on('search', searchPageControler);
 
