@@ -1,8 +1,9 @@
 
 import {API_URL, cart, products} from '../const';
-import { getCart } from '../controller/cartController';
+import { addProductCart, getCart, removeCart } from '../controller/cartController';
 import { getData } from '../getData';
 import {createElement} from '../utils/createElement'
+import { renderCount } from './renderCount';
 
 export const renderCart = (render) => {
     cart.textContent = '';
@@ -26,6 +27,7 @@ export const renderCart = (render) => {
 
     getCart().forEach(async product => {
         const data = await getData(`${API_URL}/api/goods/${product.id}`)
+
 
         const li = createElement('li', {
             className: 'cart__item',
@@ -68,7 +70,33 @@ export const renderCart = (render) => {
                 </div>
 
         `)
+
+        createElement('button', {
+            className: 'item__del',
+            ariaLabel: 'Удалить товар из корзины'
+        },
+        {
+            parent: article,
+            cb(btn) {
+                btn.addEventListener('click', () => {
+                    const isRemove = removeCart(product);
+                    if (isRemove) {
+                        li.remove();
+                    }
+                })
+            }
+        })
+
+        const countBlock = renderCount(product.count, 'item__count', count => {
+            product.count = count;
+            console.log('count: ', count);
+            addProductCart(product, true);
+            console.log('product: ', product);
+        });
+        
+        article.insertAdjacentElement('beforeend', countBlock);
     });
+
 
     const cartTotal = createElement('div', {
         className: 'cart__total',
@@ -77,10 +105,10 @@ export const renderCart = (render) => {
     }, {
         parent: container,
     });
-
+    
     const totalPrice = createElement('p', {
         className: 'cart__total-privateDecrypt',
-        textContent: 'руб 0'
+        textContent: 'руб 1000'
     }, {
         parent: cartTotal
     });

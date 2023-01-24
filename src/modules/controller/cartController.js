@@ -7,12 +7,17 @@ import { renderProducts } from "../render/renderProducts";
 
 export const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
 
-export const addProductCart = (product) => {
+export const addProductCart = (product, equal) => {
     let isCart = false;
 
     const productList = getCart().map(item => {
         if (item.id === product.id && item.color === product.color && item.size === product.size) {
-            item.count = +item.count + +product.count;
+            if (equal) {
+                item.count = product.count;
+            } else {
+                item.count = +item.count + +product.count;
+            }
+            
             isCart = true;
         }
 
@@ -25,6 +30,13 @@ export const addProductCart = (product) => {
     };
 
     localStorage.setItem('cart', JSON.stringify(productList));
+}
+
+export const removeCart = (product) => {
+    const productList = getCart().filter(item => !(item.id === product.id && item.color === product.color && item.size === product.size))
+    
+    localStorage.setItem('cart', JSON.stringify(productList));
+    return true;
 }
 
 export const cartController = () => {

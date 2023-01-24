@@ -170,7 +170,7 @@ export const renderCard = ({data, render}) => {
     </div>
   `);
 
-  const count = renderCount();
+  const count = renderCount(1, 'card__count');
 
   const addCart = createElement('button', {
     className: 'card__add-cart main-button',
