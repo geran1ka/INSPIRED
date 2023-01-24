@@ -55,6 +55,27 @@ export const addProductCart = (product, equal) => {
     localStorage.setItem('cart', JSON.stringify(productList));
 }
 
+export const calcTotalPrice = {
+    elemTotalPrice: null,
+    elemCount: null,
+    update() {
+        const cartGoods = getCart();
+        this.count = cartGoods.length;
+        this.totalPrice = cartGoods.reduce((sum, item) => {
+            const product = cartCoodsStore.getProduct(item.id);
+            return product.price * item.count + sum;
+        }, 0);
+        this.wtiteTotal();
+    }, 
+    wtiteTotal(elem = this.elemTotalPrice) {
+        if (elem) {
+            this.elemTotalPrice = elem;
+            elem.textContent = this.totalPrice;
+        }
+
+    }
+}
+
 export const removeCart = (product) => {
     const productList = getCart().filter(item => !(item.id === product.id && item.color === product.color && item.size === product.size))
     
@@ -65,7 +86,6 @@ export const removeCart = (product) => {
 export const cartController =async () => {
     const idList = getCart().map(item => item.id);
     const data = await getData(`${API_URL}/api/goods?list=${[idList]}&count=all`);
-    console.log('data: ', data);
 
     cartCoodsStore.add(data);
 
