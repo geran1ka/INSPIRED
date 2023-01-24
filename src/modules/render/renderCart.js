@@ -5,7 +5,7 @@ import { getData } from '../getData';
 import {createElement} from '../utils/createElement'
 import { renderCount } from './renderCount';
 
-export const renderCart = (render) => {
+export const renderCart = ({render, cartCoodsStore}) => {
     cart.textContent = '';
 
     if (!render) {
@@ -25,8 +25,8 @@ export const renderCart = (render) => {
         parent: container,
     });
 
-    getCart().forEach(async product => {
-        const data = await getData(`${API_URL}/api/goods/${product.id}`)
+    getCart().forEach(product => {
+        const data = cartCoodsStore.getProduct(product.id);
 
 
         const li = createElement('li', {
