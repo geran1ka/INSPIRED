@@ -7,7 +7,7 @@ import { renderNavigation } from "../render/renderNavigation";
 import { renderOrder } from "../render/renderOrder";
 import { renderProducts } from "../render/renderProducts";
 
-const cartCoodsStore = {
+export const cartCoodsStore = {
     goods: [],
     _add(product) {
         if (!this.goods.some(item => item.id === product.id)) {
@@ -81,6 +81,10 @@ export const removeCart = (product) => {
     
     localStorage.setItem('cart', JSON.stringify(productList));
     return true;
+}
+
+export const clearCart = () => {
+    localStorage.removeItem('cart');
 }
 
 export const cartController =async () => {
