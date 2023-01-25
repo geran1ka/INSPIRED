@@ -1,7 +1,7 @@
 import { order } from "../const";
 import { createElement } from "../utils/createElement";
 
-export const renderOrder = (render) => {
+export const renderOrder = ({render}) => {
     order.textContent = '';
 
     if (!render) {
@@ -63,13 +63,3 @@ export const renderOrder = (render) => {
 
 };
 
-/*
- <div class="container">
-            <h2 class="order__title">Оформление заказа</h2>
-
-            <form class="order__form">
-
-
-            </form>
-        </div>
-*/

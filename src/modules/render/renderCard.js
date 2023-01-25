@@ -49,7 +49,7 @@ export const renderCard = ({data, render}) => {
                 
                 const p = createElement('p', {
                     className: 'card__alert',
-                    textContent: product.size ? product.color ? product.count ? 'Что-то пошkо не так' : 'Кол-во не корректное' : 'Выбирете цвет' : 'Выбирите размер',
+                    textContent: product.size ? product.color ? product.count ? 'Что-то пошло не так' : 'Кол-во не корректное' : 'Выберите цвет' : 'Выберите размер',
                 }, {
                     parent: form,
                     cb(p) {
@@ -201,17 +201,3 @@ export const renderCard = ({data, render}) => {
 
 }
 
-/*
-<div class="container card__container">
-
-
-  
-        
-
-  
-          <button class="card__add-cart main-button" type="submit">В корзину</button>
-          <button class="card__favorite favorite" aria-label="Добавить в избранное" type="button" data-id="321654"></button>
-        </div>
-      </form>
-    </div>
-*/
