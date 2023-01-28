@@ -1,70 +1,85 @@
 .header {
-    padding: 24px 0 36px;
+  padding: 24px 0 36px;
+
+  @include tablet {
+    padding: 16px 0;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__phone {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
 
     @include tablet {
-        padding: 16px 0;
+      font-size: 12px;
+      line-height: 15px;
     }
 
-    &__container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
+    @include mobile {
+      display: none;
+    }
+  }
 
-        @include mobile {
-            grid-template-columns: repeat(2, 1fr);
-        }
+  &__logo {
+    justify-self: center;
+
+    @include tablet {
+      width: 154px;
     }
 
-    &__phone {
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 17px;
-        text-transform: uppercase;
-
-        @include tablet {
-            font-size: 12px;
-            line-height: 15px;
-        }
-
-        @include mobile {
-            display: none;
-        }
+    @include mobile {
+      justify-self: start;
+      width: 124px;
     }
+  }
 
-    &__logo {
-        justify-self: center;
-        
-        @include tablet {
-            width: 154px;
-        }
+  &__navigation {
+    justify-self: end;
+  }
 
-        @include mobile {
-            justify-self: start;
-            width: 124px;
-        }
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include mobile {
+      gap: 16px;
     }
+  }
 
-    &__navigation {
-        justify-self: end;
-        
-        
+  &__link {
+    position: relative;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $gray;
     }
+  }
 
-    &__nav-list {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-
-        @include mobile {
-            gap: 16px;
-        }
-    }
-
-    &__link {
-        transition: color 0.3s ease-in-out;
-
-        &:hover {
-            color: $gray;
-        }
-    }
+  &__link-count {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    color: $second-color;
+    top: 0;
+    right: -6px;
+    background-color: $main-color;
+    text-align: center;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 18px;
+  }
 }

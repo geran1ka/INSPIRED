@@ -1,5 +1,4 @@
 .card {
-
   margin-bottom: 100px;
 
   &__container {
@@ -124,6 +123,7 @@
 
   &__color-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
   }
 
@@ -156,6 +156,7 @@
 
   &__size-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
     font-size: 14px;
     line-height: 17px;
@@ -204,11 +205,11 @@
 
   &__count {
     margin-right: 24px;
-
+    
     @include tablet {
       margin-right: 20px;
     }
-
+    
     @include mobile {
       margin-right: 10px;
     }
@@ -221,8 +222,5 @@
       margin-right: 8px;
     }
   }
-  &__alert {
-    padding: 10px 0;
-    align-items: center;
-  }
+
 }

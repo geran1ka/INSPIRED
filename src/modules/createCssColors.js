@@ -1,15 +1,16 @@
-import { createElement } from "./utils/createElement"
+import { createElement } from './utils/createElement'
 
-export const createCSSColors = (colors) => {
-    let style = createElement('style');
+export const createCssColors = (colors) => {
+  let style = createElement('style');
 
-    colors.forEach(color => {
-        style.textContent += `
-            .color_${color.title}:after {
-                background-color: ${color.code};
-                ${color.title === 'white' ? 'border: 0.4px solid #8A8A8A;' : ''}
-            }
-        `
-    });
-    document.head.append(style)
+  colors.forEach(color => {
+    style.textContent += `
+      .color_${color.title}:after {
+        background-color: ${color.code};
+        ${color.title === 'white' ? 'border: 0.4px solid #8A8A8A;' : ''}
+      }
+    `
+  });
+
+  document.head.append(style);
 }

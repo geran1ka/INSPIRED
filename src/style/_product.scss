@@ -1,73 +1,67 @@
 .product {
-    height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    transition: color 0.2s ease-in-out;
+    flex-grow: 1;
+
+    &:hover {
+      color: $gray;
+    }
+  }
+
+  &__image {
+    margin-bottom: 16px;
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+
+    @include tablet {
+      margin-bottom: 10px;
+      height: 185px;
+    }
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 13px;
+
+    @include tablet {
+      font-size: 12px;
+      line-height: 15px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__row {
     display: flex;
-    flex-direction: column;
- 
-    &__title {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        margin-bottom: 13px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 
-        @include tablet {
-            font-size: 12px;
-            line-height: 15px;
-            margin-bottom: 5px;
-        }
+    @include tablet {
+      margin-bottom: 3px;
     }
+  }
 
+  &__price {
+    font-size: 14px;
+    line-height: 17px;
 
-
-
-
-    &__row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 12px;
-
-        @include tablet {
-            margin-bottom: 10px;
-        }
-
+    @include tablet {
+      font-size: 12px;
+      line-height: 15px;
     }
+  }
 
-    &__price {
-        font-size: 14px;
-        line-height: 17px;
 
-        @include tablet {
-            margin-bottom: 3px;
-            font-size: 12px;
-            line-height: 15px;
-        }
-    }
-
-    &__link {
-        transition: color 0.3s ease-in-out;
-        flex-grow: 1;
-        &:hover {
-            color: $gray;
-        }
-    }
-
-    &__image {
-        margin-bottom: 16px;
-        width: 100%;
-        height: 370px;
-        object-fit: cover;
-
-        @include tablet {
-            margin-bottom: 10px;
-            height: 185px;
-        }
-    }
-
-    &__color-list {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-    }
-
-    
+  &__color-list {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
 }

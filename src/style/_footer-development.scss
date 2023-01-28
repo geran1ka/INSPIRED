@@ -1,18 +1,22 @@
 .footer-development {
-    font-size: 12px;
-    line-height: 130%;
+  font-size: 12px;
+  line-height: 130%;
+
+  @include tablet {
+    font-size: 10px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     @include tablet {
-        font-size: 10px;
+      gap: 11px;
     }
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        @include mobile {
-            gap: 4px;
-        }
+    @include mobile {
+      gap: 4px;
     }
+  }
 }

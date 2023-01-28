@@ -3,10 +3,14 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  display: block;  // new
+  display: block;
+
+  // &:has(:checked) {
+  //   border: 0.4px solid $gray; 
+  // }
 
   &_check {
-    border: 0.4px solid $gray;
+    border: 0.4px solid $gray; 
   }
 
   &:after {
@@ -24,8 +28,8 @@
     position: absolute;
     inset: 0;
     display: block;
-    border: 0.4px solid $gray;
-  border-radius: 50%;
+    border: 0.4px solid $gray; 
+    border-radius: 50%;
   }
 
 }
